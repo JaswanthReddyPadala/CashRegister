@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cash Register App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="body">
+      <div class="app_header">
+        <h1>CASH REG</h1>
+      </div>
+
+      <div class="app_input-body">
+        <div class="user-cash app_input">
+          <h2>User Cash</h2>
+          <input
+            type="number"
+            name="user_cash"
+            id="user_cash_input"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="total-bill app_input">
+          <h2>Total Bill</h2>
+          <input
+            type="number"
+            name="total_bill"
+            id="total_bill_input"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="calculate-bill">
+          <button type="submit" id="calculate_button" onclick="checkInputs()">
+            Calculate
+          </button>
+        </div>
+      </div>
+
+      <div class="app_output">
+        <h3>Return Change</h3>
+        <div id="denomination-group">
+          
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
