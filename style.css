@@ -8,10 +8,12 @@
 }
 
 body {
-  background-color: #050009;
   display: -ms-grid;
   display: grid;
   place-items: center;
+  background-image: linear-gradient(to bottom, #181818, #ffffff09),  url("./bg.jpg");
+  background-size: cover;
+  background: linear-gradient(to bottom,  )
 }
 
 @font-face {
