@@ -7,37 +7,18 @@ const appOutput = document.querySelector(".app_output");
 const error = document.querySelector(".error");
 
 nextButton.addEventListener("click", nextInput);
-
-
-function calculateReturn(userCashAmount, totalBillAmount) {
-  let change = userCashAmount - totalBillAmount;
-  let denomination = {
-    2000: 0,
-    500: 0,
-    100: 0,
-    20: 0,
-    10: 0,
-    5: 0,
-    1: 0,
-  };
-
-
-
-
 function nextInput() {
   console.log(totalBill.value);
-  if (totalBill.value && totalBill.value>0) {
+  if (totalBill.value && totalBill.value > 0) {
     console.log(totalBill);
     nextButton.innerText = "Calculate";
     nextButton.addEventListener("click", checkInputs);
     userCashGroup.style.display = "flex";
   } else {
-    // alert("enter a valid input");
     error.style.display = "block";
     error.innerText = "Enter a valid input";
   }
 }
-
 
 function checkInputs() {
   const error = document.querySelector(".error");
@@ -58,6 +39,18 @@ function checkInputs() {
     calculateReturn(userCashAmount, totalBillAmount);
   }
 }
+
+function calculateReturn(userCashAmount, totalBillAmount) {
+  let change = userCashAmount - totalBillAmount;
+  let denomination = {
+    2000: 0,
+    500: 0,
+    100: 0,
+    20: 0,
+    10: 0,
+    5: 0,
+    1: 0,
+  };
 
   const denominationKeys = Object.keys(denomination);
 
