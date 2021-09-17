@@ -34,7 +34,14 @@ function checkInputs() {
 
     error.style.display = "block";
     error.innerText = "Please enter valid user cash amount!";
-  } else if (userCashAmount < totalBillAmount) {
+  }else if (totalBillAmount < 1) {
+    // alert("Please enter valid user cash amount!");
+    denominationGroup.style.display = "none";
+
+    error.style.display = "block";
+    error.innerText = "Please enter valid total bill amount!";
+  }
+   else if (userCashAmount < totalBillAmount) {
     // alert(`Insufficient Amount, Please give Rs.${
     //   totalBillAmount - userCashAmount
     // } more !`);
@@ -82,6 +89,9 @@ function calculateReturn(userCashAmount, totalBillAmount) {
 
 function renderReturn(denomination, dkeys) {
   appOutput.style.display = "flex";
+  while (denominationGroup.firstChild) {
+    denominationGroup.removeChild(denominationGroup.lastChild);
+  }
   denominationGroup.style.display = "flex";
   dkeys.map((eachItem) => {
     if (denomination[eachItem] > 0) {
