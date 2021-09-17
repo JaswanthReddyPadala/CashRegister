@@ -1,46 +1,41 @@
 const userCash = document.getElementById("user_cash_input");
 const totalBill = document.getElementById("total_bill_input");
 const denominationGroup = document.getElementById("denomination-group");
-
-const totalBillGroup = document.querySelector(".total-bill");
-
+const userCashGroup = document.querySelector(".user-cash");
 const nextButton = document.getElementById("calculate_button");
-
 const appOutput = document.querySelector(".app_output");
+const error = document.querySelector(".error");
 
 nextButton.addEventListener("click", nextInput);
-
 function nextInput() {
-  if (userCash.value > 0) {
+  console.log(error);
+  if (totalBill.value) {
+    console.log(totalBill);
     nextButton.innerText = "Calculate";
     nextButton.addEventListener("click", checkInputs);
-    totalBillGroup.style.display = "flex";
+    userCashGroup.style.display = "flex";
+  } else {
+    error.style.display = "none";
+    error.innerText = "Enter a valid input";
   }
-  // if(userCash.value > 0){
-  //   const totalBillH1 = document.createElement("h1");
-  //   const totalBillInput = document.createElement("input");
-  //   totalBillInput.type = "number";
-  //   totalBillInput.id="total_bill_input";
-  //   totalBillInput.autocomplete = "off";
-
-  //   totalBillGroup.appendChild(totalBillH1);
-  //   totalBillGroup.appendChild(totalBillInput);
 }
 
 function checkInputs() {
+  const error = document.querySelector(".error");
   userCashAmount = Number(userCash.value);
   totalBillAmount = Number(totalBill.value);
   if (userCashAmount < 1) {
-    alert("Please enter valid user cash amount!");
+    error.innerText = "Please enter valid user cash amount!";
   } else if (totalBillAmount < 1) {
-    alert("Please enter valid total bill amount!");
+    error.innerText = "Please enter valid total bill amount!";
   } else if (userCashAmount < totalBillAmount) {
-    alert(
-      `Insufficient Amount, Please give Rs.${
-        totalBillAmount - userCashAmount
-      } more !`
-    );
+    error.innerText = `Insufficient Amount, Please give Rs.${
+      totalBillAmount - userCashAmount
+    } more !`;
   } else {
+    if (userCashAmount == totalBillAmount) {
+      error.innerText = "Thank you for providing exact change 😃";
+    }
     calculateReturn(userCashAmount, totalBillAmount);
   }
 }
