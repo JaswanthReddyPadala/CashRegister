@@ -15,9 +15,10 @@ function nextInput() {
     nextButton.addEventListener("click", checkInputs);
     userCashGroup.style.display = "flex";
     error.style.display = "none";
-
   } else {
     // alert("Enter a valid input");
+    denominationGroup.style.display = "none";
+
     error.style.display = "block";
     error.innerText = "Enter a valid input";
   }
@@ -28,14 +29,17 @@ function checkInputs() {
   userCashAmount = Number(userCash.value);
   totalBillAmount = Number(totalBill.value);
   if (userCashAmount < 1) {
-// alert("Please enter valid user cash amount!");
-error.style.display = "block";
-    error.innerText = "Please enter valid user cash amount!";
+    // alert("Please enter valid user cash amount!");
+    denominationGroup.style.display = "none";
 
+    error.style.display = "block";
+    error.innerText = "Please enter valid user cash amount!";
   } else if (userCashAmount < totalBillAmount) {
     // alert(`Insufficient Amount, Please give Rs.${
     //   totalBillAmount - userCashAmount
     // } more !`);
+    denominationGroup.style.display = "none";
+
     error.style.display = "block";
     error.innerText = `Insufficient Amount, Please give Rs.${
       totalBillAmount - userCashAmount
@@ -43,6 +47,7 @@ error.style.display = "block";
   } else {
     if (userCashAmount == totalBillAmount) {
       // alert("Thank you for providing exact change 😃");
+      denominationGroup.style.display = "none";
       error.style.display = "block";
       error.innerText = "Thank you for providing exact change 😃";
     }
@@ -77,7 +82,7 @@ function calculateReturn(userCashAmount, totalBillAmount) {
 
 function renderReturn(denomination, dkeys) {
   appOutput.style.display = "flex";
-  denominationGroup.innerHTML = "";
+  denominationGroup.style.display = "flex";
   dkeys.map((eachItem) => {
     if (denomination[eachItem] > 0) {
       let denominationTab = document.createElement("div");
