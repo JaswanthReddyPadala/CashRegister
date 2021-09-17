@@ -8,13 +8,16 @@ const error = document.querySelector(".error");
 
 nextButton.addEventListener("click", nextInput);
 function nextInput() {
-  console.log(totalBill.value);
-  if (totalBill.value && totalBill.value > 0) {
-    console.log(totalBill);
+  // console.log(totalBill.value);
+  if (Number(totalBill.value) > 0) {
+    // console.log(totalBill);
     nextButton.innerText = "Calculate";
     nextButton.addEventListener("click", checkInputs);
     userCashGroup.style.display = "flex";
+    error.style.display = "none";
+
   } else {
+    // alert("Enter a valid input");
     error.style.display = "block";
     error.innerText = "Enter a valid input";
   }
@@ -25,15 +28,22 @@ function checkInputs() {
   userCashAmount = Number(userCash.value);
   totalBillAmount = Number(totalBill.value);
   if (userCashAmount < 1) {
+// alert("Please enter valid user cash amount!");
+error.style.display = "block";
     error.innerText = "Please enter valid user cash amount!";
-  } else if (totalBillAmount < 1) {
-    error.innerText = "Please enter valid total bill amount!";
+
   } else if (userCashAmount < totalBillAmount) {
+    // alert(`Insufficient Amount, Please give Rs.${
+    //   totalBillAmount - userCashAmount
+    // } more !`);
+    error.style.display = "block";
     error.innerText = `Insufficient Amount, Please give Rs.${
       totalBillAmount - userCashAmount
     } more !`;
   } else {
     if (userCashAmount == totalBillAmount) {
+      // alert("Thank you for providing exact change 😃");
+      error.style.display = "block";
       error.innerText = "Thank you for providing exact change 😃";
     }
     calculateReturn(userCashAmount, totalBillAmount);
