@@ -22,6 +22,23 @@ function calculateReturn(userCashAmount, totalBillAmount) {
   };
 
 
+
+
+function nextInput() {
+  console.log(totalBill.value);
+  if (totalBill.value && totalBill.value>0) {
+    console.log(totalBill);
+    nextButton.innerText = "Calculate";
+    nextButton.addEventListener("click", checkInputs);
+    userCashGroup.style.display = "flex";
+  } else {
+    // alert("enter a valid input");
+    error.style.display = "block";
+    error.innerText = "Enter a valid input";
+  }
+}
+
+
 function checkInputs() {
   const error = document.querySelector(".error");
   userCashAmount = Number(userCash.value);
@@ -54,22 +71,6 @@ function checkInputs() {
   }
   renderReturn(denomination, denominationKeys);
 }
-
-
-function nextInput() {
-  console.log(totalBill.value);
-  if (totalBill.value && totalBill.value>0) {
-    console.log(totalBill);
-    nextButton.innerText = "Calculate";
-    nextButton.addEventListener("click", checkInputs);
-    userCashGroup.style.display = "flex";
-  } else {
-    // alert("enter a valid input");
-    error.style.display = "block";
-    error.innerText = "Enter a valid input";
-  }
-}
-
 
 function renderReturn(denomination, dkeys) {
   appOutput.style.display = "flex";
